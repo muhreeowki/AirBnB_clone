@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """FileStorage Module"""
 import json
-import sys
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -42,6 +42,15 @@ class FileStorage:
                 if json_string:
                     obj_dicts = json.loads(json_string)
                     for key, value in obj_dicts.items():
-                        pass
+                        self.__objects[key] = BaseModel(**value)
+                        """
+                        Main dictionary {
+                            BaseModel.1212: {att:val}
+                            BaseModel.8232: {att:val}
+                            BaseModel.1211: {att:val}
+                            BaseModel.3222: {att:val}
+                            BaseModel.0292: {att:val}
+                        }
+                        """
         except FileNotFoundError:
             pass
