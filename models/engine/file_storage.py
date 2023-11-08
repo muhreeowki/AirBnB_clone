@@ -12,7 +12,7 @@ class FileStorage:
 
     def all(self):
         """Returns a dictionary of all the objects saved"""
-        return self.__objects.copy()
+        return self.__objects
 
     def new(self, obj):
         """Sets a new object in the __objects dictionary"""
