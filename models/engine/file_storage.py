@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """FileStorage Module"""
 import json
+import sys
 
 
 class FileStorage:
@@ -15,17 +16,32 @@ class FileStorage:
 
     def new(self, obj):
         """Sets a new object in the __objects dictionary"""
-        self.__objects[obj.id] = obj
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         """Serialize the objects dictionary into a json file."""
         with open(self.__file_path, "w") as f:
-            f.write(json.dumps(self.__objects))
+            # New dictionary to hold dictionary representaton of the objects
+            # Convert each object into its dictionary representaton
+            # Store it in the new dictionary
+            # Convert the new dictionary into a json string and write that string to the file
+            obj_dicts = {}
+            for key, value in self.__objects.items():
+                obj_dicts[key] = value.to_dict()
+            f.write(json.dumps(obj_dicts))
 
     def reload(self):
         """Deserialize the json file into the objects dictionary."""
         try:
             with open(self.__file_path, "r") as f:
-                self.__objects = json.loads(f.read())
+                # Load the dictionary of object dicts from the file
+                # Convert each object dict into an object
+                # Store each object in the __objects dictionary
+                json_string = f.read()
+                if json_string:
+                    obj_dicts = json.loads(json_string)
+                    for key, value in obj_dicts.items():
+                        pass
         except FileNotFoundError:
             pass
