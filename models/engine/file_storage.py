@@ -13,7 +13,7 @@ from models.state import State
 class FileStorage:
     """FileStorage Class that handles serialization and deserialization of objects."""
 
-    __file_path = "storage.json"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
