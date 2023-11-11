@@ -78,11 +78,11 @@ class HBNBCommand(cmd.Cmd):
                     if len(args) >= 4:
                         objects = models.storage.all()
                         obj = objects["{}.{}".format(args[0], args[1])]
-                        value = args[3]
+                        value = args[3].strip().replace('"', "")
                         if args[2] in obj.__dict__:
-                            if isinstance(obj[args[2]], int):
+                            if isinstance(obj.__dict__[args[2]], int):
                                 value = int(value)
-                            if isinstance(obj[args[2]], float):
+                            elif isinstance(obj.__dict__[args[2]], float):
                                 value = float(value)
                         setattr(obj, args[2], value)
                         obj.save()
