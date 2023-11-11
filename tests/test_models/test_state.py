@@ -15,6 +15,7 @@ from time import sleep
 from models.base_model import BaseModel
 from models.state import State
 
+
 class TestState_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the State class."""
 

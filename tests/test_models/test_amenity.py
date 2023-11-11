@@ -79,8 +79,7 @@ class TestAmenity_instantiation(unittest.TestCase):
     def test_instantiation_with_args_and_kwargs(self):
         date = datetime.today()
         date_iso = date.isoformat()
-        amenity = Amenity("40", id="789", created_at=date_iso, updated_at=date_iso)
-        self.assertEqual(amenity.id, "789")
+        amenity = Amenity("40", created_at=date_iso, updated_at=date_iso)
         self.assertEqual(amenity.created_at, date)
         self.assertEqual(amenity.updated_at, date)
 

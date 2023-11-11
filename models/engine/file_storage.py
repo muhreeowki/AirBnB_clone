@@ -11,7 +11,10 @@ from models.state import State
 
 
 class FileStorage:
-    """FileStorage Class that handles serialization and deserialization of objects."""
+    """
+    FileStorage Class that handles serialization
+    and deserialization of objects.
+    """
 
     __file_path = "file.json"
     __objects = {}
@@ -42,6 +45,6 @@ class FileStorage:
                     obj_dicts = json.loads(json_string)
                     for key, value in obj_dicts.items():
                         class_name, id = key.split(".")
-                        self.__objects[key] = eval("{}(**value)".format(class_name))
+                        self.__objects[key] = eval(f"{class_name}(**value)")
         except FileNotFoundError:
             pass

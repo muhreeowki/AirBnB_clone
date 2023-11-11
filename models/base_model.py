@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Base Model Module 
+Base Model Module
 """
 import uuid
 import models
@@ -27,15 +27,21 @@ class BaseModel:
 
     def __str__(self):
         """Returns string representation of the object"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Updates the public instance attribute updated_at with the current datetime"""
+        """
+        Updates the public instance attribute updated_at
+        with the current datetime
+        """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """
+        Returns a dictionary containing all
+        keys/values of __dict__ of the instance
+        """
         dict_represntation = self.__dict__.copy()
         dict_represntation["__class__"] = self.__class__.__name__
         dict_represntation["created_at"] = self.created_at.isoformat()
