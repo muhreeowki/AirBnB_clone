@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """update <class name> <id> <attribute name> <attribute value>"""
-        args = line.split(" ")
+        args = line.split()
 
         if len(args) < 1:
             print("** class name missing **")
@@ -80,11 +80,14 @@ class HBNBCommand(cmd.Cmd):
                         obj = objects["{}.{}".format(args[0], args[1])]
                         value = args[3].strip().replace('"', "")
                         if args[2] in obj.__dict__:
-                            if isinstance(obj.__dict__[args[2]], int):
-                                value = int(value)
-                            elif isinstance(obj.__dict__[args[2]], float):
-                                value = float(value)
-                        setattr(obj, args[2], value)
+                            try:
+                                if type(obj.__dict__[args[2]]) is int:
+                                    value = int(value)
+                                elif type(obj.__dict__[args[2]]) is int:
+                                    value = float(value)
+                                setattr(obj, args[2], value)
+                            except ValueError:
+                                pass
                         obj.save()
                     else:
                         print("** value missing **")
