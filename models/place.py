@@ -19,4 +19,5 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(self, *args, **kwargs):
+        """Constructor Method"""
         super().__init__(*args, **kwargs)
