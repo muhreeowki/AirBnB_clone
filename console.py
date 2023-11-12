@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                             try:
                                 if type(obj.__dict__[args[2]]) is int:
                                     value = int(value)
-                                elif type(obj.__dict__[args[2]]) is int:
+                                elif type(obj.__dict__[args[2]]) is float:
                                     value = float(value)
                                 setattr(obj, args[2], value)
                             except ValueError:
