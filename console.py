@@ -107,6 +107,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def postloop(self):
+        """Prints an new line after the program exists"""
         print()
 
     def validate_input(self, model_id):
