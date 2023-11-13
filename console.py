@@ -68,9 +68,9 @@ class HBNBCommand(cmd.Cmd):
         """update <class name> <id> <attribute name> <attribute value>"""
         args = line.split()
 
-        if len(args) < 1:
+        if len(args) == 0:
             print("** class name missing **")
-        elif len(args) < 2:
+        elif len(args) == 1:
             print("** instance id missing **")
         else:
             if self.validate_input("{} {}".format(args[0], args[1])):
@@ -85,9 +85,9 @@ class HBNBCommand(cmd.Cmd):
                                     value = int(value)
                                 elif isinstance(obj.__dict__[args[2]], float):
                                     value = float(value)
-                                setattr(obj, args[2], value)
                             except ValueError:
                                 pass
+                        setattr(obj, args[2], value)
                         obj.save()
                     else:
                         print("** value missing **")
