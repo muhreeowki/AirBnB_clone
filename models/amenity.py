@@ -7,7 +7,3 @@ class Amenity(BaseModel):
     """Amenity class that inherits from BaseModel"""
 
     name = ""
-
-    def __init__(self, *args, **kwargs):
-        """Constructor Method"""
-        super().__init__(*args, **kwargs)
