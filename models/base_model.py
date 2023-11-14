@@ -1,17 +1,18 @@
 #!/usr/bin/python3
-"""
-Base Model Module
-"""
+"""Module that creates the BaseModel class"""
 import uuid
 import models
 from datetime import datetime
 
 
 class BaseModel:
-    """BaseModel Class"""
+    """BaseModel Class that is used by all other Classes"""
 
     def __init__(self, *args, **kwargs):
         """Constructor Method"""
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
                 if key in ("created_at", "updated_at"):
@@ -20,9 +21,6 @@ class BaseModel:
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def __str__(self):

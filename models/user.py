@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""User model Module"""
+"""Module that creates the user class"""
 from models.base_model import BaseModel
 
 
