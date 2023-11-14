@@ -17,6 +17,18 @@ from models.user import User
 
 class TestUser_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the User class."""
+    
+    def test_attributes(self):
+        """Test attributes of the User Class"""
+
+        User.email = 'user.email'
+        User.first_name = 'John'
+        User.last_name = 'Smith'
+        User.password = '1234'
+        self.assertEqual(str, type(User.email))
+        self.assertEqual(str, type(User.first_name))
+        self.assertEqual(str, type(User.last_name))
+        self.assertEqual(str, type(User.password))
 
     def test_new_instance_stored_in_objects(self):
         """Tests instantiation of the User Class"""
