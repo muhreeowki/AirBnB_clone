@@ -1,0 +1,13 @@
+header {
+  height: 70px;
+  width: 100%;
+  color: #ffffff;
+  border-bottom: 1px solid #cccccc;
+}
+
+header > .logo {
+  margin: 0 0 0 20px;
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
