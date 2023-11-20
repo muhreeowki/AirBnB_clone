@@ -3,9 +3,14 @@ header {
   width: 100%;
   color: #ffffff;
   border-bottom: 1px solid #cccccc;
+  display: flex;
+  align-items: center;
 }
 
-header > .logo {
+div.logo {
+  background-image: url('../images/logo.png');
+  background-repeat: no-repeat;
+  height: 100%;
   margin: 0 0 0 20px;
   position: relative;
   top: 50%;
